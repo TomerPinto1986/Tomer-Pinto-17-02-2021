@@ -31,6 +31,7 @@ const WeatherPreview = ({
             className="weather-preview flex column align-center"
         >
             <Card.Title>{city}</Card.Title>
+            <Card.Img variant="top" src={`/icons/${weather.WeatherIcon}.png`} />
             <i onClick={toggleFavorite} className={favBtnText}></i>
             <Card.Text>{tempratureToShow()}</Card.Text>
             <Card.Title>{weather.WeatherText}</Card.Title>

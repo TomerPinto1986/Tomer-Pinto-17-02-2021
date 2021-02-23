@@ -34,6 +34,10 @@ const WeeklyList = ({ WeeklyList, units, isDark }) => {
                         <Card.Title>
                             {moment(weather.Date).format("ddd")}
                         </Card.Title>
+                        <Card.Img
+                            variant="top"
+                            src={`/icons/${weather.Day.Icon}.png`}
+                        />
                         <Card.Text>
                             {tempratureToShow(
                                 weather.Temperature.Minimum.Value,
