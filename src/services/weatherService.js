@@ -48,18 +48,18 @@ async function getGeoWeather() {
     var position = await getPosition();
     const { latitude } = position.coords;
     const { longitude } = position.coords;
-    const res = await axios(
-        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${latitude}%2C${longitude}`
-    );
-    const city = res.data.LocalizedName;
-    // const city = "london";
+    // const res = await axios(
+    //     `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${latitude}%2C${longitude}`
+    // );
+    // const city = res.data.LocalizedName;
+    const city = "london";
     const currWeather = await getCurrWeather(city);
     return currWeather;
 }
 
 async function getCurrWeather(q) {
     let weather = storageService.loadFromStorage(WEATHER_KEY);
-    // if (weather) return weather;
+    if (weather) return weather;
     try {
         const city = await axios(
             `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${q}`

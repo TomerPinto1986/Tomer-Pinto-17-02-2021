@@ -19,7 +19,7 @@ const LocationSearch = ({ onSearch, isDark }) => {
             setErrorMsg("Please enter a location name.");
             setTimeout(() => {
                 setErrorMsg(null);
-            }, 3000);
+            }, 2000);
         } else {
             const myRe = /^[a-zA-Z]+$/;
             const valid = myRe.test(search);
@@ -29,7 +29,7 @@ const LocationSearch = ({ onSearch, isDark }) => {
                 setErrorMsg("Only English letters are allowed.");
                 setTimeout(() => {
                     setErrorMsg(null);
-                }, 3000);
+                }, 2000);
             }
         }
     }
