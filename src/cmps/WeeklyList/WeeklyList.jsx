@@ -4,13 +4,20 @@ import Card from "react-bootstrap/Card";
 
 import "./WeeklyList.scss";
 
-const WeeklyList = ({ WeeklyList, units }) => {
+const WeeklyList = ({ WeeklyList, units, isDark }) => {
     function tempratureToShow(min, max) {
         return units === "c"
             ? `${min} - ${max} \u00b0C`
             : `${Math.floor(min * 1.8 + 32)} - ${Math.floor(
                   max * 1.8 + 32
               )} \u00b0F`;
+    }
+
+    function themeModeBg() {
+        return isDark ? "dark" : "light";
+    }
+    function themeModeTxt() {
+        return isDark ? "light" : "dark";
     }
 
     return (
@@ -21,6 +28,8 @@ const WeeklyList = ({ WeeklyList, units }) => {
                         style={{ width: "18rem" }}
                         className="weather-preview flex column align-center"
                         key={weather.EpochDate}
+                        bg={themeModeBg()}
+                        text={themeModeTxt()}
                     >
                         <Card.Title>
                             {moment(weather.Date).format("ddd")}

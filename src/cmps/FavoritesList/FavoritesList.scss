@@ -1,3 +1,7 @@
 .favorites-list {
     cursor: pointer;
+    .favorite-preview {
+        margin-inline-end: 5px;
+        margin-block-end: 20px;
+    }
 }

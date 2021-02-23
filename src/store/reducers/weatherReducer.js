@@ -4,6 +4,7 @@ const INITIAL_STATE = {
     currWeather: null,
     favorites: weatherService.getFavorites(),
     units: "c",
+    isDark: false,
 };
 
 export function weatherReducer(state = INITIAL_STATE, action) {
@@ -14,6 +15,8 @@ export function weatherReducer(state = INITIAL_STATE, action) {
             return { ...state, favorites: action.favorites };
         case "CHANGE_UNITS":
             return { ...state, units: action.units };
+        case "CHANGE_THEME":
+            return { ...state, isDark: action.theme === "dark" };
         default:
             return state;
     }

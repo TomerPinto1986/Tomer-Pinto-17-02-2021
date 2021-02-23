@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { connect } from "react-redux";
-import { changeUnits } from "../../store/actions/weatherActions";
+import { changeUnits, changeTheme } from "../../store/actions/weatherActions";
 
 import "./Header.scss";
 
@@ -9,9 +9,17 @@ const Header = (props) => {
     function onChangeUnits(units) {
         props.changeUnits(units);
     }
+
+    function onChangeTheme(theme) {
+        props.changeTheme(theme);
+    }
+
+    function themeMode() {
+        return props.isDark ? "dark" : "light";
+    }
     return (
         <header className="header">
-            <Navbar bg="light" expand="lg">
+            <Navbar bg={themeMode()} variant={themeMode()} expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -32,6 +40,18 @@ const Header = (props) => {
                                 Fahrenheit
                             </NavDropdown.Item>
                         </NavDropdown>
+                        <NavDropdown title="Theme" id="basic-nav-dropdown1">
+                            <NavDropdown.Item
+                                onClick={() => onChangeTheme("dark")}
+                            >
+                                Dark
+                            </NavDropdown.Item>
+                            <NavDropdown.Item
+                                onClick={() => onChangeTheme("light")}
+                            >
+                                Light
+                            </NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -39,8 +59,15 @@ const Header = (props) => {
     );
 };
 
-const mapDispatchToProps = {
-    changeUnits,
+const mapStateToProps = (state) => {
+    return {
+        isDark: state.weatherReducer.isDark,
+    };
 };
 
-export default connect(null, mapDispatchToProps)(Header);
+const mapDispatchToProps = {
+    changeUnits,
+    changeTheme,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,12 +1,13 @@
 import axios from "axios";
 import { storageService } from "./storageService";
 
-const API_KEY = "bouPb7Ob1dDQ3V3OvFX3udSa8KKD2QYq";
+const API_KEY = "XhxzoYMHxt8QuBm3XRztsUGdBZCexYYS";
 const WEATHER_KEY = "weather";
 const FAVORITES = "favorites";
 const gFavorites = storageService.loadFromStorage(FAVORITES) || [];
 
 export const weatherService = {
+    getGeoWeather,
     getCurrWeather,
     addToFavorites,
     removeFromFavorites,
@@ -15,7 +16,6 @@ export const weatherService = {
 };
 
 function getFavorites() {
-    console.log(gFavorites);
     return gFavorites;
 }
 
@@ -38,18 +38,37 @@ function removeFromFavorites(id) {
     } else return -1;
 }
 
+function getPosition() {
+    return new Promise((success, error) => {
+        navigator.geolocation.getCurrentPosition(success, error);
+    });
+}
+
+async function getGeoWeather() {
+    var position = await getPosition();
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
+    const res = await axios(
+        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${latitude}%2C${longitude}`
+    );
+    const city = res.data.LocalizedName;
+    // const city = "london";
+    const currWeather = await getCurrWeather(city);
+    return currWeather;
+}
+
 async function getCurrWeather(q) {
     let weather = storageService.loadFromStorage(WEATHER_KEY);
-    if (weather) return weather;
+    // if (weather) return weather;
     try {
         const city = await axios(
-            `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${q}`
+            `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${q}`
         );
         const todayWeather = await axios(
-            `http://dataservice.accuweather.com/currentconditions/v1/${city.data[0].Key}?apikey=${API_KEY}`
+            `https://dataservice.accuweather.com/currentconditions/v1/${city.data[0].Key}?apikey=${API_KEY}`
         );
         const weeklyWeather = await axios(
-            `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${city.data[0].Key}?apikey=${API_KEY}&metric=true`
+            `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${city.data[0].Key}?apikey=${API_KEY}&metric=true`
         );
         weather = {
             id: city.data[0].Key,

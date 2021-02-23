@@ -13,6 +13,19 @@ export function getCurrWeather(city) {
     };
 }
 
+export function getGeoWeather() {
+    return async (dispatch) => {
+        try {
+            const currWeather = await weatherService.getGeoWeather();
+            dispatch({ type: "SET_CURR_WEATHER", currWeather });
+            return currWeather;
+        } catch (err) {
+            console.log("Error", err);
+            throw err;
+        }
+    };
+}
+
 export function setCurrWeather(currWeather) {
     return (dispatch) => {
         dispatch({ type: "SET_CURR_WEATHER", currWeather });
@@ -38,5 +51,11 @@ export function removeFromFavorites(id) {
 export function changeUnits(units) {
     return (dispatch) => {
         dispatch({ type: "CHANGE_UNITS", units });
+    };
+}
+
+export function changeTheme(theme) {
+    return (dispatch) => {
+        dispatch({ type: "CHANGE_THEME", theme });
     };
 }

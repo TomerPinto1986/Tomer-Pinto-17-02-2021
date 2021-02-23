@@ -1,12 +1,18 @@
 import "./FavoritesList.scss";
 import Card from "react-bootstrap/Card";
 
-const FavoritesList = ({ favorites, onChangeCurrWeather, units }) => {
+const FavoritesList = ({ favorites, onChangeCurrWeather, units, isDark }) => {
     function tempratureToShow(weather) {
-        console.log(weather);
         return units === "c"
             ? `${weather.Temperature.Metric.Value} \u00b0C`
             : `${weather.Temperature.Imperial.Value} \u00b0F`;
+    }
+
+    function themeModeBg() {
+        return isDark ? "dark" : "light";
+    }
+    function themeModeTxt() {
+        return isDark ? "light" : "dark";
     }
 
     return (
@@ -16,9 +22,11 @@ const FavoritesList = ({ favorites, onChangeCurrWeather, units }) => {
                     return (
                         <Card
                             style={{ width: "18rem" }}
-                            className="flex column align-center"
+                            className="flex column align-center favorite-preview"
                             key={weather.id}
                             onClick={() => onChangeCurrWeather(weather)}
+                            bg={themeModeBg()}
+                            text={themeModeTxt()}
                         >
                             <Card.Title>{weather.city}</Card.Title>
                             <Card.Text>

@@ -9,6 +9,7 @@ import {
     getCurrWeather,
     addCityToFavorites,
     removeFromFavorites,
+    getGeoWeather,
 } from "../../store/actions/weatherActions";
 
 import "./HomePage.scss";
@@ -26,7 +27,7 @@ const HomePage = (props) => {
         } else {
             (async function getWether() {
                 try {
-                    const currWeather = await props.getCurrWeather("tel-aviv");
+                    const currWeather = await props.getGeoWeather();
                     setFavBtnText(
                         weatherService.isFavorite(currWeather.id)
                             ? "favorite fas fa-star"
@@ -41,7 +42,12 @@ const HomePage = (props) => {
 
     async function handleSubmit(term) {
         try {
-            await props.getCurrWeather(term);
+            const currWeather = await props.getCurrWeather(term);
+            setFavBtnText(
+                weatherService.isFavorite(currWeather.id)
+                    ? "favorite fas fa-star"
+                    : "favorite far fa-star"
+            );
         } catch (err) {
             console.log("Error", err);
         }
@@ -62,8 +68,12 @@ const HomePage = (props) => {
         );
     }
 
+    function themeMode() {
+        return props.isDark ? "home-page dark" : "home-page ";
+    }
+
     return (
-        <div className="home-page   ">
+        <div className={themeMode()}>
             {props.currWeather && (
                 <div>
                     <span className="header flex space-between">
@@ -74,13 +84,18 @@ const HomePage = (props) => {
                                 favBtnText={favBtnText}
                                 toggleFavorite={toggleFavorite}
                                 units={props.units}
+                                isDark={props.isDark}
                             />
                         </span>
-                        <LocationSearch onSubmit={handleSubmit} />
+                        <LocationSearch
+                            isDark={props.isDark}
+                            onSearch={handleSubmit}
+                        />
                     </span>
                     <WeeklyList
                         WeeklyList={props.currWeather.weekly.DailyForecasts}
                         units={props.units}
+                        isDark={props.isDark}
                     />
                 </div>
             )}
@@ -89,14 +104,15 @@ const HomePage = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         currWeather: state.weatherReducer.currWeather,
         units: state.weatherReducer.units,
+        isDark: state.weatherReducer.isDark,
     };
 };
 
 const mapDispatchToProps = {
+    getGeoWeather,
     getCurrWeather,
     addCityToFavorites,
     removeFromFavorites,

@@ -11,7 +11,6 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-    background-color: bisque;
 }
 
 img {
@@ -71,3 +70,8 @@ input {
 ::-webkit-scrollbar-thumb:vertical:active {
     -webkit-border-radius: 100px;
 }
+
+// .dark {
+//     background-color: rgb(22, 9, 93);
+//     color: rgb(224, 221, 221);
+// }

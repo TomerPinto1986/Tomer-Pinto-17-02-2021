@@ -16,14 +16,21 @@ const Favorites = (props) => {
         props.history.push("/");
     }
 
+    function themeMode() {
+        return props.isDark
+            ? "favorites dark flex column align-center"
+            : "favorites flex column align-center";
+    }
+
     return (
-        <div className="favorites flex column align-center">
+        <div className={themeMode()}>
             <h2>Favorites Locations</h2>
             {favorites && (
                 <FavoritesList
                     favorites={favorites}
                     onChangeCurrWeather={changeCurrWeather}
                     units={props.units}
+                    isDark={props.isDark}
                 />
             )}
         </div>
@@ -34,6 +41,7 @@ const mapStateToProps = (state) => {
     return {
         favorites: state.weatherReducer.favorites,
         units: state.weatherReducer.units,
+        isDark: state.weatherReducer.isDark,
     };
 };
 
