@@ -31,7 +31,7 @@ const FavoritesList = ({ favorites, onChangeCurrWeather, units, isDark }) => {
                             <Card.Title>{weather.city}</Card.Title>
                             <Card.Img
                                 variant="top"
-                                src={`/icons/${weather.today.WeatherIcon}.png`}
+                                src={`./icons/${weather.today.WeatherIcon}.png`}
                             />
                             <Card.Text>
                                 {tempratureToShow(weather.today)}

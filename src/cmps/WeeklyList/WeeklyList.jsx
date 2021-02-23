@@ -36,7 +36,7 @@ const WeeklyList = ({ WeeklyList, units, isDark }) => {
                         </Card.Title>
                         <Card.Img
                             variant="top"
-                            src={`/icons/${weather.Day.Icon}.png`}
+                            src={`./icons/${weather.Day.Icon}.png`}
                         />
                         <Card.Text>
                             {tempratureToShow(
