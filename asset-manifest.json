@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Tomer-Pinto-17-02-2021/static/css/main.74521071.chunk.css",
-    "main.js": "/Tomer-Pinto-17-02-2021/static/js/main.67007aa1.chunk.js",
-    "main.js.map": "/Tomer-Pinto-17-02-2021/static/js/main.67007aa1.chunk.js.map",
+    "main.js": "/Tomer-Pinto-17-02-2021/static/js/main.110d7cbe.chunk.js",
+    "main.js.map": "/Tomer-Pinto-17-02-2021/static/js/main.110d7cbe.chunk.js.map",
     "runtime-main.js": "/Tomer-Pinto-17-02-2021/static/js/runtime-main.43b85430.js",
     "runtime-main.js.map": "/Tomer-Pinto-17-02-2021/static/js/runtime-main.43b85430.js.map",
     "static/css/2.b503249f.chunk.css": "/Tomer-Pinto-17-02-2021/static/css/2.b503249f.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.b503249f.chunk.css",
     "static/js/2.5d08a906.chunk.js",
     "static/css/main.74521071.chunk.css",
-    "static/js/main.67007aa1.chunk.js"
+    "static/js/main.110d7cbe.chunk.js"
   ]
 }
