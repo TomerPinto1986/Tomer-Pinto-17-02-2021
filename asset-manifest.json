@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Tomer-Pinto-17-02-2021/static/css/main.74521071.chunk.css",
-    "main.js": "/Tomer-Pinto-17-02-2021/static/js/main.110d7cbe.chunk.js",
-    "main.js.map": "/Tomer-Pinto-17-02-2021/static/js/main.110d7cbe.chunk.js.map",
+    "main.css": "/Tomer-Pinto-17-02-2021/static/css/main.13bb74c4.chunk.css",
+    "main.js": "/Tomer-Pinto-17-02-2021/static/js/main.93de325d.chunk.js",
+    "main.js.map": "/Tomer-Pinto-17-02-2021/static/js/main.93de325d.chunk.js.map",
     "runtime-main.js": "/Tomer-Pinto-17-02-2021/static/js/runtime-main.43b85430.js",
     "runtime-main.js.map": "/Tomer-Pinto-17-02-2021/static/js/runtime-main.43b85430.js.map",
     "static/css/2.b503249f.chunk.css": "/Tomer-Pinto-17-02-2021/static/css/2.b503249f.chunk.css",
@@ -12,15 +12,16 @@
     "static/js/3.e8008911.chunk.js.map": "/Tomer-Pinto-17-02-2021/static/js/3.e8008911.chunk.js.map",
     "index.html": "/Tomer-Pinto-17-02-2021/index.html",
     "static/css/2.b503249f.chunk.css.map": "/Tomer-Pinto-17-02-2021/static/css/2.b503249f.chunk.css.map",
-    "static/css/main.74521071.chunk.css.map": "/Tomer-Pinto-17-02-2021/static/css/main.74521071.chunk.css.map",
+    "static/css/main.13bb74c4.chunk.css.map": "/Tomer-Pinto-17-02-2021/static/css/main.13bb74c4.chunk.css.map",
     "static/js/2.5d08a906.chunk.js.LICENSE.txt": "/Tomer-Pinto-17-02-2021/static/js/2.5d08a906.chunk.js.LICENSE.txt",
+    "static/media/HomePage.scss": "/Tomer-Pinto-17-02-2021/static/media/light.fe6cd0d8.jpg",
     "static/media/all.min.css": "/Tomer-Pinto-17-02-2021/static/media/fa-solid-900.f4f93856.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.43b85430.js",
     "static/css/2.b503249f.chunk.css",
     "static/js/2.5d08a906.chunk.js",
-    "static/css/main.74521071.chunk.css",
-    "static/js/main.110d7cbe.chunk.js"
+    "static/css/main.13bb74c4.chunk.css",
+    "static/js/main.93de325d.chunk.js"
   ]
 }
